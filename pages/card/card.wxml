@@ -1,0 +1,49 @@
+<!--pages/card/card.wxml-->
+<view class="tarot">                                                                              
+  <text>心中想着要问的事，然后抽牌</text>
+
+  <view class="card">
+
+    <block wx:key="time" wx:for="{{cardList}}">
+      <image class="img" wx:if="{{cardType === '1'}}" src="http://www.tarot5.cn/photo/tarotphoto/177/{{item.name}}.jpg" mode="aspectFill" style="{{item.isReverse}}"></image>
+      <image class="img" wx:if="{{cardType === '2'}}" src="https://image.ibb.co/{{item.name}}.jpg" mode="aspectFill"  style="width:300rpx;height:430rpx;zoom:80%;"></image>
+    </block>
+
+
+    <block wx:if="{{isPick === 0}}">      
+      <image class="img" wx:if="{{cardType === '1'}}" src="http://img04.taobaocdn.com/imgextra/i4/55214675/TB21qcFbVXXXXX6XXXXXXXXXXXX_!!55214675.jpg_480x480.jpg" mode="aspectFill"></image>
+      <image class="img" wx:if="{{cardType === '2'}}" src="https://image.ibb.co/j3xDo6/79.jpg" mode="aspectFill" style="height:430rpx;width:300rpx;"></image>
+    </block>
+  </view>
+
+  <radio-group bindchange="cardChange">
+    <label class="radio" wx:key="name" wx:for="{{cardTypeItems}}">
+      <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+  </radio-group>
+
+  <view class="draw">
+    <button type="primary" size="mini" loading="{{btnLoading}}" disabled="{{btnDisabled}}" 
+      bindtap="onPick" hover-class="button-hover">
+      {{actionName}}
+    </button>
+
+    <radio-group bindchange="checkboxChange">
+      <label class="radio" wx:key="name" wx:for="{{drawTypeItems}}">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+    </radio-group>
+  </view>
+
+  <text catchtap="onShowForm" style="margin-top: 10rpx;color:yellow;font-size:24rpx;">记录此次感悟</text>
+
+  <view class="wrapper" wx:if="{{isShowForm}}">
+    <view class="info"></view>
+    <form bindsubmit="bindFormSubmit">
+      <view class="input">
+        <textarea placeholder="记录下本次抽牌心得" name="textarea" maxlength="512" value="{{text}}"/>
+      </view>
+      <button form-type="submit" class="submit"> 写好了 </button>
+    </form>
+  </view>
+</view>

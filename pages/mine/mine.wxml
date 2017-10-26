@@ -1,0 +1,29 @@
+<view class="record-list">
+  <scroll-view 
+    scroll-y="true" 
+    style="height: 100%;">
+    <text hidden="{{infoHidden ? true : false}}">暂无记录,请抽牌后再提交</text>
+    <block wx:key="time" wx:for="{{recordList}}">
+      <view class="record">
+        <text>{{item.time}}</text>
+        <view class="right">
+          <view class="card">
+            <block wx:key="idx" wx:for="{{item.card}}" wx:for-item="card">
+              <image class="img" wx:if="{{item.cardType === '1'}}" src="http://www.tarot5.cn/photo/tarotphoto/177/{{card.name}}.jpg" mode="aspectFill" style="{{card.isReverse}}"></image>
+              <image class="img" wx:if="{{item.cardType === '2'}}" src="https://image.ibb.co/{{card.name}}.jpg" mode="aspectFill"  style="width:300rpx;height:430rpx;zoom:80%;"></image>
+            </block>
+          </view>
+          <text>{{item.text}}</text>
+        </view>
+        <text class="remove" catchtap="onRemove" data-record="{{index}}">删除</text>
+      </view>
+    </block>
+  </scroll-view>
+
+  <view>
+    <modal title="modal对话框" hidden="{{modalHidden}}" confirm-text="确定" cancel-text="取消"
+    bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
+      <text style="font-size:32rpx;text-align:center;">确定删除？</text>
+    </modal>
+  </view>
+</view>

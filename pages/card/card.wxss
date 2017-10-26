@@ -1,0 +1,78 @@
+/* pages/card/card.wxss */
+.tarot {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+}
+.text {
+  text-align: center;
+}
+.card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 30rpx; 
+}
+.img {                                   
+  /* zoom:180%; */     
+  width: 220rpx;
+	height: 400rpx;   
+  margin-top: 10rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+}                                                                              
+
+button {
+  width: 380rpx;
+  height: 60rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+.button-hover {
+  background-color: #3e8e41;
+}  
+
+.radio {
+  font-size: 24rpx;
+}  
+.draw {
+  align-items: center;
+}
+
+
+.wrapper{
+	background-color: #333;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	align-items: center;
+	padding: 20rpx;
+}
+.info{
+	color: #888;
+	padding: 30rpx;
+}
+.input {
+	margin-bottom: 20rpx;
+}
+.input textarea{
+	display: block;
+	border-radius: 10rpx;
+	height: 280rpx;
+	width: 600rpx;
+	padding: 30rpx;
+	background-color: #fafafa;
+	color: #333;
+	border: 1rpx solid #ddd;
+}
+.submit{
+	padding: 8rpx 35rpx;
+	background-color: #f85f48;
+	color: #fff;
+	font-size: 24rpx;
+	border-radius: 10rpx;
+}    
+                      

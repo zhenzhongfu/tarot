@@ -1,0 +1,16 @@
+{
+  "name": "tarot",
+  "version": "0.1.0",
+  "description": "每日一牌",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhenzhongfu/tarot.git"
+  },
+  "keywords": [],
+  "author": "zhenzhongfu",
+  "license": "MIT",
+  "dependencies": {
+
+  }
+}

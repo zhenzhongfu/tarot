@@ -1,0 +1,31 @@
+.record-list {
+  background-color: #333;
+  color: #fff;
+}
+.record {
+  border-bottom: 0.025rem solid #c0c0c0;
+  font-size: 24rpx;
+}
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 30rpx; 
+  zoom: 70%;
+}
+.img {                                   
+  /* zoom:180%; */     
+  width: 220rpx;
+	height: 400rpx;   
+  margin-left: 2rpx;
+  margin-right: 2rpx;
+}
+text {
+  line-height: 10rex;
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+}
+.right {
+  display: flex;
+  justify-content: space-between;
+}

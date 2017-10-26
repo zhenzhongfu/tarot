@@ -1,0 +1,33 @@
+{
+    "pages": [
+        "pages/card/card",
+        "pages/mine/mine"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#333",
+        "navigationBarTitleText": "每日一牌",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#333"
+    },
+    "tabBar": {
+      "color": "#231815",
+      "selectedColor": "#330099",
+      "borderStyle": "white",
+      "backgroundColor": "#f9f9f9",
+      "list": [
+        {
+          "pagePath": "pages/card/card",
+          "text": "占卜",
+          "iconPath": "img/audient.png",
+          "selectedIconPath": "img/audient1.png"
+        },
+        {
+          "pagePath": "pages/mine/mine",
+          "text": "我的",
+          "iconPath": "img/mine.png",
+          "selectedIconPath": "img/mine1.png"
+        }
+      ]
+    }
+}
