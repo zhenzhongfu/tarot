@@ -4,10 +4,25 @@
 
   <view class="card">
 
+<!--
     <block wx:key="time" wx:for="{{cardList}}">
       <image class="img" wx:if="{{cardType === '1'}}" src="http://www.tarot5.cn/photo/tarotphoto/177/{{item.name}}.jpg" mode="aspectFill" style="{{item.isReverse}}"></image>
-      <image class="img" wx:if="{{cardType === '2'}}" src="https://image.ibb.co/{{item.name}}.jpg" mode="aspectFill"  style="width:300rpx;height:430rpx;zoom:80%;"></image>
-    </block>
+      -->
+      <image wx:for="{{cardList}}" bindtap="imgPreview"
+      data-list="{{cardList}}" data-name="{{item.name}}"
+      data-cardtype="1" 
+      class="img" wx:if="{{cardType === '1'}}"   
+      src="http://www.tarot5.cn/photo/tarotphoto/177/{{item.name}}.jpg"
+      mode="aspectFill" style="{{item.isReverse}}"></image>
+
+      <image wx:for="{{cardList}}" bindtap="imgPreview" 
+      data-list="{{cardList}}" data-name="{{item.name}}"
+      data-cardtype="2" 
+      class="img" wx:if="{{cardType === '2'}}" 
+      src="https://image.ibb.co/{{item.name}}.jpg" 
+      mode="aspectFill"  style="width:300rpx;height:430rpx;zoom:80%;"></image>
+      <!--
+    </block>   -->
 
 
     <block wx:if="{{isPick === 0}}">      
