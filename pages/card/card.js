@@ -1,4 +1,6 @@
 var tarot = require('waite.js')
+var util = require("../../utils/util.js");
+var toPinyin = require("../../utils/toPinyin.js");
 // pages/card/card.js
 Page({
 
@@ -15,6 +17,10 @@ Page({
     actionName: '开始抽牌',
     text: '',
     isShowForm: false,
+
+    maskHidden: true,
+    imagePath: "",
+    canvasHidden: true,
 
     cardType: '1',
     cardTypeItems: [
@@ -38,6 +44,8 @@ Page({
     if(options.shareList === undefined) {
       return
     }
+
+this.createNewImg();
     const cardList = []
     console.log("onload:", options.shareList)
     const t = JSON.parse(options.shareList)
@@ -290,5 +298,107 @@ Page({
       current:src,
       urls: imgList
     })
-  }                         
+  },
+
+///////////////////////////////////
+  //将金额绘制到canvas的固定
+  setCard: function (context) {
+    var money = util.toThousands("刷卡记录的飞机螺丝");
+    console.log(money);
+    context.setFontSize(60);
+    context.setFillStyle("#ffffff");
+    context.fillText(money, 340, 190);
+    context.stroke();
+  },
+  //将姓名绘制到canvas的固定
+  setInfo: function (context) {
+    var name = toPinyin.Pinyin.getFullChars("楼上的房间哦受到警方立即，撒旦解放了涉及到法律是的，士大夫");
+    context.setFontSize(30);
+    context.setFillStyle("#ffffff");
+    context.save();
+    context.translate(170, 506);//必须先将旋转原点平移到文字位置
+    context.rotate(-5 * Math.PI / 180);
+    context.fillText(name, 0, 0);//必须为（0,0）原点
+    context.restore();
+    context.stroke();
+  },
+  //
+  setOther: function (context) {
+    context.drawImage("https://image.ibb.co/" + this.data.cardList[0].name +".jpg", 0, 0, 300, 300)
+  },
+  //将canvas转换为图片保存到本地，然后将图片路径传给image图片的src
+  createNewImg: function () {
+    var that = this;
+    var context = wx.createCanvasContext('mycanvas');
+    //var path = "/img/mine1.png";
+    var path = "/img/bg.jpg"
+    //将模板图片绘制到canvas,在开发工具中drawImage()函数有问题，不显示图片
+    //不知道是什么原因，手机环境能正常显示
+    context.drawImage(path, 0, 0, 375, 667);
+    this.setCard(context);
+    this.setInfo(context);
+    this.setOther(context)
+    //绘制图片
+    context.draw();
+    //将生成好的图片保存到本地，需要延迟一会，绘制期间耗时
+    setTimeout(function () {
+      wx.canvasToTempFilePath({
+        canvasId: 'mycanvas',
+        success: function (res) {
+          var tempFilePath = res.tempFilePath;
+          console.log(tempFilePath);
+          that.setData({
+            imagePath: tempFilePath,
+            // canvasHidden:true
+          });
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      });
+    }, 200);
+  },
+  //点击图片进行预览，长按保存分享图片
+  previewImg: function (e) {
+    var img = this.data.imagePath
+    wx.previewImage({
+      current: img, // 当前显示图片的http链接
+      urls: [img] // 需要预览的图片http链接列表
+    })
+  },  
+  onPrint: function (e) {
+    // 判断cardList>1
+    if(this.data.cardList.length === 0){
+      wx.showToast({
+        title: '请先抽牌',
+        icon: 'succes',
+        duration: 2000,
+        mask: true
+      })
+      return
+    }
+    var that = this;
+    this.setData({
+      maskHidden: false,
+      canvasHidden: false
+    });
+    wx.showToast({
+      title: '装逼中...',
+      icon: 'loading',
+      duration: 3000
+    });
+    setTimeout(function () {
+      wx.hideToast()
+      that.createNewImg();
+      that.setData({
+        maskHidden: true
+      });
+    }, 1000)
+  },   
+  onHidden: function(e) {
+    this.setData({
+      canvasHidden: true
+    })
+  }
+  ////////////////////////////////////                  
 })

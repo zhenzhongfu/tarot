@@ -7,6 +7,14 @@
   background-color: #333;
   color: #fff;
 }
+.page {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+}
 .text {
   text-align: center;
 }
@@ -42,7 +50,6 @@ button {
   align-items: center;
 }
 
-
 .wrapper{
 	background-color: #333;
 	display: flex;
@@ -75,4 +82,33 @@ button {
 	font-size: 24rpx;
 	border-radius: 10rpx;
 }    
-                      
+
+
+.kf {
+  position: fixed;
+  bottom: 30rpx;
+  right: 5rpx;
+  font-size:24rpx;
+  color: #888;
+}
+.mybtn{
+  width:350rpx;
+  margin: 60rpx auto;
+  text-align: center;
+}
+.cancelbtn{
+  width:350rpx;
+  margin: 60rpx auto;
+  text-align: center;
+  background-color: red;
+}
+.mask{position: fixed;top: 0;left: 0;z-index: 3; width: 100%;height: 100%;opacity: 0;}
+.canvas-box{position: fixed; top:999999rpx; left: 0}        
+.mycanvas{
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+}          

@@ -234,9 +234,9 @@ export default {
     'gVGTMR/07',
     'iXBHFm/06',
     'kRcram/05',
-    'kXnDo6/03',
     'eMehgR/04',
-    'cVEhgR/01',
-    'nPaYo6/02'
+    'kXnDo6/03',
+    'nPaYo6/02',
+    'cVEhgR/01'
   ]
 }             
